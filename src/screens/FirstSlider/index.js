@@ -103,7 +103,7 @@ export default class SliderScreen extends Component {
     }
     else{
       barColor = 'red'
-      smalltext = 'Die Wohnung ist finanziell sehr interessant. Du hast gute Chancen, dass\nsie sich von selbst abzahlt.'
+      smalltext = 'Die Wohnung lohnt sich fur dich finanaziell wahrscheinlich nicht.'
     } 
 
     return (
