@@ -8,10 +8,25 @@ export default {
     flex: 1,
     backgroundColor: 'white'
   },
+  container1: {
+    flex: 1,
+    backgroundColor: '#e9e9ef'
+  },
   page1View: {
   	alignItems: 'center',
   	justifyContent: 'center',
   	marginTop: 20
+  },
+  pageViewIOS: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical:20,
+    marginTop: 30,
+    borderColor: '#aeaeae',
+    borderTopWidth:1,
+    shadowOffset:{  width: 0,  height: 5,  },
+    shadowColor: 'black',
+    shadowOpacity: 0.2,
   },
   page1Image: {
   	width: responsiveWidth(40),
@@ -27,6 +42,14 @@ export default {
     flexDirection:'row',
     marginLeft:40,
     marginRight:40,
+    marginTop:20,
+    marginBottom:20,
+    justifyContent:'space-between'
+  },
+  flexViewIOS:{
+    flexDirection:'row',
+    marginLeft:10,
+    marginRight:10,
     marginTop:20,
     marginBottom:20,
     justifyContent:'space-between'
@@ -61,6 +84,11 @@ export default {
     width:responsiveWidth(30),
     resizeMode:'cover',
   },
+  screenImageIOS:{
+    height:responsiveWidth(40),
+    width:responsiveWidth(40),
+    resizeMode:'cover',
+  },
   sreenText:{
     paddingVertical:10,
     paddingHorizontal:15,
@@ -68,6 +96,30 @@ export default {
     textAlign:'center',
     color:'white',
     marginTop:20
+  },
+  sreenTextIOS:{
+    textAlign:'center',
+    color:'white',
+  },
+  screenButtonIOS:{
+    marginLeft:20,
+    marginRight:20,
+    borderRadius:10,
+    backgroundColor:'#e03145',
+    alignItems:'center',
+    justifyContent:'center',
+    paddingVertical:10,
+    marginTop:10
+  },
+  screenButtonIOS1:{
+    marginLeft:30,
+    marginRight:30,
+    borderRadius:10,
+    backgroundColor:'#e03145',
+    alignItems:'center',
+    justifyContent:'center',
+    paddingVertical:10,
+    marginTop:10
   },
   logoImage: {
   	width: responsiveWidth(40),
@@ -91,12 +143,35 @@ export default {
     marginLeft:20,
     marginRight:20
   },
+  screenViewIOS:{
+    borderRadius:3,
+    marginTop:40,
+    marginLeft:20,
+    marginRight:20,
+    shadowColor: '#7d7d82',
+    shadowOffset: {
+      width: 1,
+      height: 3
+    },
+    shadowRadius: 15,
+    shadowOpacity: 1.0
+  },
   titleText:{
     color:'white',
-    fontSize:responsiveFontSize(2.5)
+    fontSize:responsiveFontSize(2.5),
+  },
+  titleTextIOS:{
+    color:'black',
+    fontSize:responsiveFontSize(2.5),
+    fontWeight:'800'
   },
   screenTitleView:{
     backgroundColor:'black',
+    height:responsiveHeight(7),
+    alignItems:'center',
+    justifyContent:'center'
+  },
+  screenTitleViewIOS:{
     height:responsiveHeight(7),
     alignItems:'center',
     justifyContent:'center'
