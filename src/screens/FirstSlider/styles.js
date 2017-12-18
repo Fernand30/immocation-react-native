@@ -56,7 +56,7 @@ export default {
     fontSize:responsiveFontSize(1.3),
     color:'white',
     marginLeft:20,
-    marginBottom:10,
+    height:30,
   },
   blackText:{
     fontSize:responsiveFontSize(2),

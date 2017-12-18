@@ -21,9 +21,9 @@ export default class SliderScreen extends Component {
       super(props);
       this.state=({
         x1:0,
-        x2:2000,
-        x3:20,
-        x4:3,
+        x2:80000,
+        x3:55,
+        x4:8,
       })
   }
 
@@ -83,27 +83,27 @@ export default class SliderScreen extends Component {
     bei = this.state.x1*2;
     beiM = this.state.x1*12;
     value = this.state.x3*this.state.x4*12 /this.state.x2*100
-    value1 = this.state.x3*this.state.x4*12 /this.state.x2*10
     x4 = this.state.x4.toFixed(1)
-    xx4 = x4*80
+    xx4 = this.state.x3*this.state.x4
     xxx4 = xx4.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    fixv = value1.toFixed(1)
-    tem1 = this.state.x2/2
-    tem2 = this.state.x2 *10
-    temx1 = tem1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    fixv = value.toFixed(1)
+    tem1 = this.state.x2/this.state.x3
+    tem2 = this.state.x2 
+    temx12 = tem1.toFixed(0)
+    temx1 = temx12.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     temx2 = tem2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    if(value>100) value = 100
-    if(value>60){
+    if(value>10) value = 10
+    if(value>=6){
       barColor = '#0ef513'
       smalltext = 'Die Wohnung ist finanziell sehr interessant. Du hast gute Chancen, dass\nsie sich von selbst abzahlt.'
     } 
-    else if(value>50){
+    else if(value>=5){
        barColor = '#fafd06'
-       smalltext = 'Die Wohnung konnte finanaziell interessant sein. Ein genauerer Blick\n lohnt sich.'
+       smalltext = 'Die Wohnung könnte finanziell interessant sein. Ein genauerer Blick \nlohnt sich.'
     }
     else{
       barColor = 'red'
-      smalltext = 'Die Wohnung lohnt sich fur dich finanaziell wahrscheinlich nicht.'
+      smalltext = 'Die Wohnung lohnt sich für dich finanziell wahrscheinlich nicht.'
     } 
 
     return (
@@ -135,8 +135,8 @@ export default class SliderScreen extends Component {
                               height:40
                             }}
                             minimumValue = {0}
-                            maximumValue = {100}
-                            step = {1}
+                            maximumValue = {10}
+                            step = {0.1}
                             disabled = {true}
                             value={value}
                           />
@@ -149,7 +149,7 @@ export default class SliderScreen extends Component {
                    <View style={Styles.sliderView}>
                       <View style={Styles.flexView}>
                         <Text style={Styles.blackText}>Kaufpreis</Text>
-                        <Text style={Styles.blackText}>{temx1}€/㎡</Text>
+                        <Text style={Styles.blackText}>{temx1}€/m²</Text>
                         <Text style={Styles.blackText}>{temx2}€</Text>
                       </View>
                       <View style={Styles.sliderWidth}>
@@ -161,9 +161,9 @@ export default class SliderScreen extends Component {
                               width:40,
                               height:40
                             }}
-                            minimumValue = {2000}
-                            maximumValue = {20000}
-                            step = {100}
+                            minimumValue = {20000}
+                            maximumValue = {200000}
+                            step = {1000}
                             onValueChange = {(val)=>this.onChangeValue2(val)}
                             value = {this.state.x2}
                           />
@@ -172,7 +172,7 @@ export default class SliderScreen extends Component {
                    <View style={Styles.sliderView}>
                       <View style={Styles.flexView}>
                         <Text style={Styles.blackText}>Wohnflache</Text>
-                        <Text style={Styles.blackText}>{this.state.x3}㎡</Text>
+                        <Text style={Styles.blackText}>{this.state.x3}m²</Text>
                       </View>
                       <View style={Styles.sliderWidth}>
                           <Slider
@@ -196,7 +196,7 @@ export default class SliderScreen extends Component {
                       <View style={Styles.flexView}>
                         <Text style={Styles.blackText}>Kaltmiete</Text>
                         <Text style={Styles.blackText}>{xxx4}€/Monat</Text>
-                        <Text style={Styles.blackText}>{x4}€/㎡</Text>
+                        <Text style={Styles.blackText}>{x4}€/m²</Text>
                       </View>
                       <View style={Styles.sliderWidth}>
                           <Slider
