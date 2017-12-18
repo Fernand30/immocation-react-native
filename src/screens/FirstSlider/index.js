@@ -149,7 +149,7 @@ export default class SliderScreen extends Component {
                    <View style={Styles.sliderView}>
                       <View style={Styles.flexView}>
                         <Text style={Styles.blackText}>Kaufpreis</Text>
-                        <Text style={Styles.blackText}>{temx1}€/m</Text>
+                        <Text style={Styles.blackText}>{temx1}€/㎡</Text>
                         <Text style={Styles.blackText}>{temx2}€</Text>
                       </View>
                       <View style={Styles.sliderWidth}>
@@ -172,7 +172,7 @@ export default class SliderScreen extends Component {
                    <View style={Styles.sliderView}>
                       <View style={Styles.flexView}>
                         <Text style={Styles.blackText}>Wohnflache</Text>
-                        <Text style={Styles.blackText}>{this.state.x3}m</Text>
+                        <Text style={Styles.blackText}>{this.state.x3}㎡</Text>
                       </View>
                       <View style={Styles.sliderWidth}>
                           <Slider
@@ -196,7 +196,7 @@ export default class SliderScreen extends Component {
                       <View style={Styles.flexView}>
                         <Text style={Styles.blackText}>Kaltmiete</Text>
                         <Text style={Styles.blackText}>{xxx4}€/Monat</Text>
-                        <Text style={Styles.blackText}>{x4}€/m</Text>
+                        <Text style={Styles.blackText}>{x4}€/㎡</Text>
                       </View>
                       <View style={Styles.sliderWidth}>
                           <Slider
