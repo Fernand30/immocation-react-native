@@ -84,8 +84,10 @@ export default class SliderScreen extends Component {
     beiM = this.state.x1*12;
     value = this.state.x3*this.state.x4*12 /this.state.x2*100
     x4 = this.state.x4.toFixed(1)
+
     xx4 = this.state.x3*this.state.x4
-    xxx4 = xx4.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    xx41 = xx4.toFixed(0)
+    xxx4 = xx41.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     fixv = value.toFixed(1)
     tem1 = this.state.x2/this.state.x3
     tem2 = this.state.x2 
@@ -189,7 +191,6 @@ export default class SliderScreen extends Component {
                             onValueChange = {(val)=>this.onChangeValue3(val)}
                             value = {this.state.x3}
                           />
-                          <Text style={Styles.blacksmallText}>Annahme fur Auszahlungszeitraum:2%</Text>
                       </View> 
                    </View>
                    <View style={Styles.sliderView}>

@@ -25,6 +25,7 @@ export default {
     borderColor:'#a4a4a4',
     borderBottomWidth:1,
     paddingTop:10,
+    paddingBottom:10,
   },
   blackView:{
     backgroundColor:'black',
