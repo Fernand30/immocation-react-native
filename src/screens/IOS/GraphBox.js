@@ -29,7 +29,7 @@ const GraphBox = ({ boxTitle,  btn2Route, navigate }) => {
 
                     <View style={{justifyContent: 'center', alignItems: 'center' }}>
                     <Button
-                        onPress={() => Actions.register()}
+                        onPress={() => Actions.login()}
                         containerStyle={{ padding: 5, overflow: 'hidden', borderRadius: 10, backgroundColor: '#E03145', width: 155 }}
                         disabledContainerStyle={{ backgroundColor: 'grey' }}
                         style={{ fontSize: 20, color: 'white' }}>
@@ -46,7 +46,7 @@ const GraphBox = ({ boxTitle,  btn2Route, navigate }) => {
 
                     <View style={{justifyContent: 'center', alignItems: 'center' }}>
                     <Button
-                        onPress={() => Actions.login()}
+                        onPress={() => Actions.register()}
                         containerStyle={{ padding: 5, height: 35, overflow: 'hidden', borderRadius: 10, backgroundColor: '#E03145', width: 100 }}
                         disabledContainerStyle={{ backgroundColor: 'grey' }}
                         style={{ fontSize: 20, color: 'white' }}>

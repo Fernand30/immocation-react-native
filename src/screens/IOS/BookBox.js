@@ -5,7 +5,7 @@ import CardItem from './CardItem'
 import BookCardItem from './CardItem';
 import Button from 'react-native-button';
 
-const BookBox = ({ boxTitle, btn1Title, btn2Title }) => {
+const BookBox = ({ boxTitle, goSafari}) => {
     const {
         imageStyle,
         containerContentStyle,
@@ -35,19 +35,19 @@ const BookBox = ({ boxTitle, btn1Title, btn2Title }) => {
                 <View style={{ width: 350, flexDirection: 'row', justifyContent: 'space-around' }}>
 
                     <View >
-                        <Button>
+                        <Button onPress={goSafari('https://www.amazon.de/gp/product/1973363178/')}>
                             <Image style={imageStyle} source={require('./amazon.de.png')} />
                         </Button>    
                     </View>
 
                     <View >
-                        <Button>
+                        <Button onPress={goSafari('https://www.amazon.de/gp/product/B0775V7KG8/')}>
                             <Image style={imageStyle} source={require('./kindle.png')} />
                         </Button>    
                     </View>
 
                     <View >
-                        <Button>
+                        <Button onPress={goSafari('https://www.amazon.de/gp/product/B077Y3Z7V4/')}>
                             <Image style={imageStyle} source={require('./audible.png')} />
                         </Button>    
                     </View>

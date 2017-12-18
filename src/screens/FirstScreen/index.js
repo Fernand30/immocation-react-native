@@ -57,7 +57,7 @@ export default class FirstScreen extends Component {
                         btn2Route={'Explanation'}
                     />
 
-                    <BookBox boxTitle={'Das immocation Buch'} />
+                    <BookBox boxTitle={'Das immocation Buch'} goSafari = {(url)=>this.goSafari.bind(this,url)} />
                 </View>:
                 <View style = {Styles.container}>
                      <View style={{height:20,}}/>

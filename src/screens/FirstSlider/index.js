@@ -21,9 +21,9 @@ export default class SliderScreen extends Component {
       super(props);
       this.state=({
         x1:0,
-        x2:0,
-        x3:0,
-        x4:0
+        x2:2000,
+        x3:20,
+        x4:3,
       })
   }
 
@@ -82,7 +82,29 @@ export default class SliderScreen extends Component {
     monaM = this.state.x1*7;
     bei = this.state.x1*2;
     beiM = this.state.x1*12;
-    value = 100-this.state.x2+this.state.x3+this.state.x4
+    value = this.state.x3*this.state.x4*12 /this.state.x2*100
+    value1 = this.state.x3*this.state.x4*12 /this.state.x2*10
+    x4 = this.state.x4.toFixed(1)
+    xx4 = x4*80
+    xxx4 = xx4.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    fixv = value1.toFixed(1)
+    tem1 = this.state.x2/2
+    tem2 = this.state.x2 *10
+    temx1 = tem1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    temx2 = tem2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    if(value>100) value = 100
+    if(value>60){
+      barColor = '#0ef513'
+      smalltext = 'Die Wohnung ist finanziell sehr interessant. Du hast gute Chancen, dass\nsie sich von selbst abzahlt.'
+    } 
+    else if(value>50){
+       barColor = '#fafd06'
+       smalltext = 'Die Wohnung konnte finanaziell interessant sein. Ein genauerer Blick\n lohnt sich.'
+    }
+    else{
+      barColor = 'red'
+      smalltext = 'Die Wohnung ist finanziell sehr interessant. Du hast gute Chancen, dass\nsie sich von selbst abzahlt.'
+    } 
 
     return (
             <View style = {Styles.container}>
@@ -96,23 +118,18 @@ export default class SliderScreen extends Component {
                    <View style={Styles.blackView}>
                       <View style={Styles.flexView}>
                           <Text style={Styles.whiteText}>Bruttomietrendite</Text>
-                          <Text style={Styles.whiteText}>{value}%</Text>
+                          <Text style={Styles.whiteText}>{fixv}%</Text>
                       </View>
                       <View style={Styles.sliderWidth}>
                           <Slider
                             trackStyle={Styles.track}
-                            thumbStyle={(value<50)?{
+                            thumbStyle={{
                                     width: 20,
                                     height: 20,
                                     borderRadius: 10,
-                                    backgroundColor: '#e03145',
-                                  }:{
-                                    width: 20,
-                                    height: 20,
-                                    borderRadius: 10,
-                                    backgroundColor: '#0ef513',
+                                    backgroundColor: barColor,
                                   }}
-                            minimumTrackTintColor={(value>50)?'#0ef513':'red'}
+                            minimumTrackTintColor={barColor}
                             thumbTouchSize = {{
                               width:40,
                               height:40
@@ -125,16 +142,15 @@ export default class SliderScreen extends Component {
                           />
                       </View> 
                       <Text style={Styles.whitesmallText}>
-                          Die Wohnung ist finanziell sehr interessant. Du hast gute Chancen, dass{'\n'}
-                          sie sich von selbst abzahlt.
+                          {smalltext}
                       </Text>
                    </View>
                    
                    <View style={Styles.sliderView}>
                       <View style={Styles.flexView}>
                         <Text style={Styles.blackText}>Kaufpreis</Text>
-                        <Text style={Styles.blackText}>{this.state.x2}€/m</Text>
-                        <Text style={Styles.blackText}>{this.state.x2}€</Text>
+                        <Text style={Styles.blackText}>{temx1}€/m</Text>
+                        <Text style={Styles.blackText}>{temx2}€</Text>
                       </View>
                       <View style={Styles.sliderWidth}>
                           <Slider
@@ -145,11 +161,11 @@ export default class SliderScreen extends Component {
                               width:40,
                               height:40
                             }}
-                            minimumValue = {0}
-                            maximumValue = {100}
-                            step = {1}
+                            minimumValue = {2000}
+                            maximumValue = {20000}
+                            step = {100}
                             onValueChange = {(val)=>this.onChangeValue2(val)}
-                            animateTransitions={true}
+                            value = {this.state.x2}
                           />
                       </View>    
                    </View>
@@ -167,10 +183,11 @@ export default class SliderScreen extends Component {
                               width:40,
                               height:40
                             }}
-                            minimumValue = {0}
-                            maximumValue = {12.00}
-                            step = {0.25}
+                            minimumValue = {20}
+                            maximumValue = {120}
+                            step = {1}
                             onValueChange = {(val)=>this.onChangeValue3(val)}
+                            value = {this.state.x3}
                           />
                           <Text style={Styles.blacksmallText}>Annahme fur Auszahlungszeitraum:2%</Text>
                       </View> 
@@ -178,8 +195,8 @@ export default class SliderScreen extends Component {
                    <View style={Styles.sliderView}>
                       <View style={Styles.flexView}>
                         <Text style={Styles.blackText}>Kaltmiete</Text>
-                        <Text style={Styles.blackText}>{this.state.x4}€/Monat</Text>
-                        <Text style={Styles.blackText}>{this.state.x4}€/m</Text>
+                        <Text style={Styles.blackText}>{xxx4}€/Monat</Text>
+                        <Text style={Styles.blackText}>{x4}€/m</Text>
                       </View>
                       <View style={Styles.sliderWidth}>
                           <Slider
@@ -190,10 +207,11 @@ export default class SliderScreen extends Component {
                               width:40,
                               height:40
                             }}
-                            minimumValue = {0}
-                            maximumValue = {50}
-                            step = {1}
+                            minimumValue = {3}
+                            maximumValue = {15}
+                            step = {0.1}
                             onValueChange = {(val)=>this.onChangeValue4(val)}
+                            value = {this.state.x4}
                           />
                       </View>    
                    </View>
