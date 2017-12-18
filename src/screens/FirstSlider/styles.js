@@ -55,7 +55,8 @@ export default {
   whitesmallText:{
     fontSize:responsiveFontSize(1.3),
     color:'white',
-    marginLeft:20
+    marginLeft:20,
+    marginBottom:10,
   },
   blackText:{
     fontSize:responsiveFontSize(2),
