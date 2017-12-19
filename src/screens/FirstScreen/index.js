@@ -10,6 +10,10 @@ import {
   Linking,
   Platform
 } from 'react-native';
+import FCM, {FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType} from 'react-native-fcm';
+
+import {registerKilledListener, registerAppListener} from "../../Firebase/Listeners";
+import firebaseClient from  "../../Firebase/FirebaseClient";
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Actions } from 'react-native-router-flux';
 import {Colors, Fonts, Images, Metrics, Constants } from '../../Themes';
@@ -18,14 +22,134 @@ import Header from "../IOS/Header";
 import GraphBox from "../IOS/GraphBox";
 import BookBox from "../IOS/BookBox";
 
+registerKilledListener();
+
 export default class FirstScreen extends Component {
   
-  constructor(props){
-        super(props);
-      }
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: "",
+      tokenCopyFeedback: ""
+    }
+  }
 
-  componentDidMount(){
-    
+   async componentDidMount(){
+    registerAppListener();
+    FCM.getInitialNotification().then(notif => {
+      this.setState({
+        initNotif: notif
+      })
+    });
+
+    try{
+      let result = await FCM.requestPermissions({badge: false, sound: true, alert: true});
+    } catch(e){
+      console.error(e);
+    }
+
+    FCM.getFCMToken().then(token => {
+      alert(token);
+      this.setState({token: token || ""})
+    });
+
+    if(Platform.OS === 'ios'){
+      FCM.getAPNSToken().then(token => {
+        console.log("APNS TOKEN (getFCMToken)", token);
+      });
+    }
+  }
+
+  showLocalNotification() {
+    FCM.presentLocalNotification({
+      vibrate: 500,
+      title: 'Hello',
+      body: 'Test Notification',
+      big_text: 'i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large',
+      priority: "high",
+      sound: "bell.mp3",
+      large_icon: "https://image.freepik.com/free-icon/small-boy-cartoon_318-38077.jpg",
+      show_in_foreground: true,
+      number: 10
+    });
+  }
+
+  scheduleLocalNotification() {
+    FCM.scheduleLocalNotification({
+      id: 'testnotif',
+      fire_date: new Date().getTime()+5000,
+      vibrate: 500,
+      title: 'Hello',
+      body: 'Test Scheduled Notification',
+      sub_text: 'sub text',
+      priority: "high",
+      large_icon: "https://image.freepik.com/free-icon/small-boy-cartoon_318-38077.jpg",
+      show_in_foreground: true,
+      picture: 'https://firebase.google.com/_static/af7ae4b3fc/images/firebase/lockup.png'
+    });
+  }
+
+  sendRemoteNotification(token) {
+    let body;
+
+    if(Platform.OS === 'android'){
+      body = {
+        "to": token,
+        "data":{
+          "custom_notification": {
+            "title": "Simple FCM Client",
+            "body": "This is a notification with only NOTIFICATION.",
+            "sound": "default",
+            "priority": "high",
+            "show_in_foreground": true
+          }
+        },
+        "priority": 10
+      }
+    } else {
+      body = {
+        "to": token,
+        "notification":{
+          "title": "Simple FCM Client",
+          "body": "This is a notification with only NOTIFICATION.",
+          "sound": "default"
+        },
+        "priority": 10
+      }
+    }
+
+    firebaseClient.send(JSON.stringify(body), "notification");
+  }
+
+  sendRemoteData(token) {
+    let body = {
+      "to": token,
+      "data":{
+        "title": "Simple FCM Client",
+        "body": "This is a notification with only DATA.",
+        "sound": "default"
+      },
+      "priority": "normal"
+    }
+
+    firebaseClient.send(JSON.stringify(body), "data");
+  }
+
+  sendRemoteNotificationWithData(token) {
+    let body = {
+      "to": token,
+      "notification":{
+        "title": "Simple FCM Client",
+        "body": "This is a notification with NOTIFICATION and DATA (NOTIF).",
+        "sound": "default"
+      },
+      "data":{
+        "hello": "there"
+      },
+      "priority": "high"
+    }
+
+    firebaseClient.send(JSON.stringify(body), "notification-data");
   }
 
   goRechner(){
@@ -47,8 +171,15 @@ export default class FirstScreen extends Component {
   }
 
   render() {
+    let { token, tokenCopyFeedback } = this.state;
     that = this;
     return (  <View style={{flex:1}}>
+      <Text>
+        Init notif: {JSON.stringify(this.state.initNotif)}
+      </Text>
+      <TouchableOpacity onPress={() => this.sendRemoteNotification(token)} >
+        <Text >Send Remote Notification</Text>
+      </TouchableOpacity>
               { (Platform.OS==='ios')?
                 <View>
                     <Header />
