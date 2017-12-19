@@ -49,7 +49,6 @@ export default class FirstScreen extends Component {
     }
 
     FCM.getFCMToken().then(token => {
-      alert(token);
       this.setState({token: token || ""})
     });
 
@@ -174,12 +173,6 @@ export default class FirstScreen extends Component {
     let { token, tokenCopyFeedback } = this.state;
     that = this;
     return (  <View style={{flex:1}}>
-      <Text>
-        Init notif: {JSON.stringify(this.state.initNotif)}
-      </Text>
-      <TouchableOpacity onPress={() => this.sendRemoteNotification(token)} >
-        <Text >Send Remote Notification</Text>
-      </TouchableOpacity>
               { (Platform.OS==='ios')?
                 <View>
                     <Header />
