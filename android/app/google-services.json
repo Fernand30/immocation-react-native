@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "691677131830",
+    "firebase_url": "https://immocation-da71f.firebaseio.com",
+    "project_id": "immocation-da71f",
+    "storage_bucket": "immocation-da71f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691677131830:android:2cde4e3efb0cd424",
+        "android_client_info": {
+          "package_name": "com.androidslider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691677131830-58768ebfvaunkcebrmj7o1a9jiakmh5f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKlrnofadm6zARS8cyZija_W25DpXFutY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
