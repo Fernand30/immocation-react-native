@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "691677131830",
-    "firebase_url": "https://immocation-da71f.firebaseio.com",
-    "project_id": "immocation-da71f",
-    "storage_bucket": "immocation-da71f.appspot.com"
+    "project_number": "279056760260",
+    "firebase_url": "https://immocation-bierdeckelrechnung.firebaseio.com",
+    "project_id": "immocation-bierdeckelrechnung",
+    "storage_bucket": "immocation-bierdeckelrechnung.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:691677131830:android:2cde4e3efb0cd424",
+        "mobilesdk_app_id": "1:279056760260:android:f27d21f19533d46c",
         "android_client_info": {
-          "package_name": "com.androidslider"
+          "package_name": "de.immocation.bierdeckelrechnung"
         }
       },
       "oauth_client": [
         {
-          "client_id": "691677131830-58768ebfvaunkcebrmj7o1a9jiakmh5f.apps.googleusercontent.com",
+          "client_id": "279056760260-pn1394mlhgkpd6hv0gnmct2bhv79n5ul.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "de.immocation.bierdeckelrechnung",
+            "certificate_hash": "00ff44962f4649a4cbc2f66d9d69ff858d2ef7e8"
+          }
+        },
+        {
+          "client_id": "279056760260-kq5uuv9j709oap7q533dulv7m5por0kr.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDKlrnofadm6zARS8cyZija_W25DpXFutY"
+          "current_key": "AIzaSyADczerGhCl7l934vjJQDPH-3hTSw0RnWE"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279056760260-kq5uuv9j709oap7q533dulv7m5por0kr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
