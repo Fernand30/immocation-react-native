@@ -1,18 +1,17 @@
 import React from 'react';
-import { Text, View, Image, Linking} from 'react-native';
+import { Text, View, Image } from 'react-native';
 import Card from './Card';
 import CardItem from './CardItem'
 import BookCardItem from './CardItem';
 import Button from 'react-native-button';
 
-const BookBox = ({ boxTitle, goSafari}) => {
+const BookBox = ({ boxTitle, goSafari }) => {
     const {
         imageStyle,
         containerContentStyle,
         containerContentSize,
         buttonStyle
     } = styles;
-
 
     return (
         <Card style={{ flexDirection: 'column' }}>
@@ -33,7 +32,7 @@ const BookBox = ({ boxTitle, goSafari}) => {
 
             <BookCardItem >
                 <View style={{ width: 350, flexDirection: 'row', justifyContent: 'space-around' }}>
-
+    
                     <View >
                         <Button onPress={goSafari('https://www.amazon.de/gp/product/1973363178/')}>
                             <Image style={imageStyle} source={require('./amazon.de.png')} />
@@ -41,15 +40,11 @@ const BookBox = ({ boxTitle, goSafari}) => {
                     </View>
 
                     <View >
-                        <Button onPress={goSafari('https://www.amazon.de/gp/product/B0775V7KG8/')}>
-                            <Image style={imageStyle} source={require('./kindle.png')} />
-                        </Button>    
+                        <Image style={imageStyle} source={require('./kindle.png')} />
                     </View>
 
                     <View >
-                        <Button onPress={goSafari('https://www.amazon.de/gp/product/B077Y3Z7V4/')}>
-                            <Image style={imageStyle} source={require('./audible.png')} />
-                        </Button>    
+                        <Image style={imageStyle} source={require('./audible.png')} />
                     </View>
                 </View>
             </BookCardItem>

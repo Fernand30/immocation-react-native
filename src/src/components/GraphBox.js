@@ -4,7 +4,6 @@ import Card from './Card';
 import CardItem from './CardItem';
 import Button from 'react-native-button';
 import { StackNavigator } from 'react-navigation';
-import { Actions } from 'react-native-router-flux';
 
 const GraphBox = ({ boxTitle,  btn2Route, navigate }) => {
     const {
@@ -29,7 +28,6 @@ const GraphBox = ({ boxTitle,  btn2Route, navigate }) => {
 
                     <View style={{justifyContent: 'center', alignItems: 'center' }}>
                     <Button
-                        onPress={() => Actions.login()}
                         containerStyle={{ padding: 5, overflow: 'hidden', borderRadius: 10, backgroundColor: '#E03145', width: 155 }}
                         disabledContainerStyle={{ backgroundColor: 'grey' }}
                         style={{ fontSize: 20, color: 'white' }}>
@@ -46,7 +44,7 @@ const GraphBox = ({ boxTitle,  btn2Route, navigate }) => {
 
                     <View style={{justifyContent: 'center', alignItems: 'center' }}>
                     <Button
-                        onPress={() => Actions.register()}
+                        onPress={() => navigate('Explanation')}
                         containerStyle={{ padding: 5, height: 35, overflow: 'hidden', borderRadius: 10, backgroundColor: '#E03145', width: 100 }}
                         disabledContainerStyle={{ backgroundColor: 'grey' }}
                         style={{ fontSize: 20, color: 'white' }}>

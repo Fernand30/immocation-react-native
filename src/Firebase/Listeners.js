@@ -49,7 +49,7 @@ export function registerAppListener(){
 
   FCM.on(FCMEvent.RefreshToken, token => {
     console.log("TOKEN (refreshUnsubscribe)", token);
-    this.props.onChangeToken(token);
+    
   });
 
   FCM.enableDirectChannel();

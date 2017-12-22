@@ -22,7 +22,40 @@ import Header from "../IOS/Header";
 import GraphBox from "../IOS/GraphBox";
 import BookBox from "../IOS/BookBox";
 
-registerKilledListener();
+// this shall be called regardless of app state: running, background or not running. Won't be called when app is killed by user in iOS
+FCM.on(FCMEvent.Notification, async (notif) => {
+    // there are two parts of notif. notif.notification contains the notification payload, notif.data contains data payload
+    if(notif.local_notification){
+      //this is a local notification
+    }
+    if(notif.opened_from_tray){
+      //iOS: app is open/resumed because user clicked banner
+      //Android: app is open/resumed because user clicked banner or tapped app icon
+    }
+    // await someAsyncCall();
+
+    if(Platform.OS ==='ios'){
+      //optional
+      //iOS requires developers to call completionHandler to end notification process. If you do not call it your background remote notifications could be throttled, to read more about it see https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623013-application.
+      //This library handles it for you automatically with default behavior (for remote notification, finish with NoData; for WillPresent, finish depend on "show_in_foreground"). However if you want to return different result, follow the following code to override
+      //notif._notificationType is available for iOS platfrom
+      switch(notif._notificationType){
+        case NotificationType.Remote:
+          notif.finish(RemoteNotificationResult.NewData) //other types available: RemoteNotificationResult.NewData, RemoteNotificationResult.ResultFailed
+          break;
+        case NotificationType.NotificationResponse:
+          notif.finish();
+          break;
+        case NotificationType.WillPresent:
+          notif.finish(WillPresentNotificationResult.All) //other types available: WillPresentNotificationResult.None
+          break;
+      }
+    }
+});
+FCM.on(FCMEvent.RefreshToken, (token) => {
+    alert(token)
+    // fcm token may not be available on first load, catch it here
+});
 
 export default class FirstScreen extends Component {
   
@@ -34,122 +67,18 @@ export default class FirstScreen extends Component {
     }
   }
 
-   async componentDidMount(){
-    registerAppListener();
-    FCM.getInitialNotification().then(notif => {
-      this.setState({
-        initNotif: notif
-      })
-    });
-
-    try{
-      let result = await FCM.requestPermissions({badge: false, sound: true, alert: true});
-    } catch(e){
-      console.error(e);
+    componentDidMount() {
+        // iOS: show permission prompt for the first call. later just check permission in user settings
+        // Android: check permission in user settings
+        //FCM.requestPermissions().then(()=>console.log('granted')).catch(()=>alert('notification permission rejected'));
+        
+        FCM.getFCMToken().then(token => {
+            alert(token)
+            // store fcm token in your server
+        });
+        
     }
 
-    FCM.getFCMToken().then(token => {
-      this.setState({token: token || ""})
-    });
-
-    if(Platform.OS === 'ios'){
-      FCM.getAPNSToken().then(token => {
-        console.log("APNS TOKEN (getFCMToken)", token);
-      });
-    }
-  }
-
-  showLocalNotification() {
-    FCM.presentLocalNotification({
-      vibrate: 500,
-      title: 'Hello',
-      body: 'Test Notification',
-      big_text: 'i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large, i am large',
-      priority: "high",
-      sound: "bell.mp3",
-      large_icon: "https://image.freepik.com/free-icon/small-boy-cartoon_318-38077.jpg",
-      show_in_foreground: true,
-      number: 10
-    });
-  }
-
-  scheduleLocalNotification() {
-    FCM.scheduleLocalNotification({
-      id: 'testnotif',
-      fire_date: new Date().getTime()+5000,
-      vibrate: 500,
-      title: 'Hello',
-      body: 'Test Scheduled Notification',
-      sub_text: 'sub text',
-      priority: "high",
-      large_icon: "https://image.freepik.com/free-icon/small-boy-cartoon_318-38077.jpg",
-      show_in_foreground: true,
-      picture: 'https://firebase.google.com/_static/af7ae4b3fc/images/firebase/lockup.png'
-    });
-  }
-
-  sendRemoteNotification(token) {
-    let body;
-
-    if(Platform.OS === 'android'){
-      body = {
-        "to": token,
-        "data":{
-          "custom_notification": {
-            "title": "Simple FCM Client",
-            "body": "This is a notification with only NOTIFICATION.",
-            "sound": "default",
-            "priority": "high",
-            "show_in_foreground": true
-          }
-        },
-        "priority": 10
-      }
-    } else {
-      body = {
-        "to": token,
-        "notification":{
-          "title": "Simple FCM Client",
-          "body": "This is a notification with only NOTIFICATION.",
-          "sound": "default"
-        },
-        "priority": 10
-      }
-    }
-
-    firebaseClient.send(JSON.stringify(body), "notification");
-  }
-
-  sendRemoteData(token) {
-    let body = {
-      "to": token,
-      "data":{
-        "title": "Simple FCM Client",
-        "body": "This is a notification with only DATA.",
-        "sound": "default"
-      },
-      "priority": "normal"
-    }
-
-    firebaseClient.send(JSON.stringify(body), "data");
-  }
-
-  sendRemoteNotificationWithData(token) {
-    let body = {
-      "to": token,
-      "notification":{
-        "title": "Simple FCM Client",
-        "body": "This is a notification with NOTIFICATION and DATA (NOTIF).",
-        "sound": "default"
-      },
-      "data":{
-        "hello": "there"
-      },
-      "priority": "high"
-    }
-
-    firebaseClient.send(JSON.stringify(body), "notification-data");
-  }
 
   goRechner(){
     Actions.login();
