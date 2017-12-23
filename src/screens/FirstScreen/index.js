@@ -8,7 +8,9 @@ import {
   ImageBackground,
   TouchableOpacity,
   Linking,
-  Platform
+  Platform,
+  TextInput,
+  AlertIOS
 } from 'react-native';
 import FCM, {FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType} from 'react-native-fcm';
 
@@ -22,8 +24,6 @@ import Header from "../IOS/Header";
 import GraphBox from "../IOS/GraphBox";
 import BookBox from "../IOS/BookBox";
 
-registerKilledListener();
-
 export default class FirstScreen extends Component {
   
   constructor(props) {
@@ -34,29 +34,11 @@ export default class FirstScreen extends Component {
     }
   }
 
-   async componentDidMount(){
-    registerAppListener();
-    FCM.getInitialNotification().then(notif => {
-      this.setState({
-        initNotif: notif
-      })
-    });
-
-    try{
-      let result = await FCM.requestPermissions({badge: false, sound: true, alert: true});
-    } catch(e){
-      console.error(e);
-    }
-
+  componentDidMount(){
     FCM.getFCMToken().then(token => {
-      this.setState({token: token || ""})
-    });
-
-    if(Platform.OS === 'ios'){
-      FCM.getAPNSToken().then(token => {
-        console.log("APNS TOKEN (getFCMToken)", token);
-      });
-    }
+            this.setState({token:token})
+            
+        });
   }
 
   showLocalNotification() {
@@ -170,8 +152,6 @@ export default class FirstScreen extends Component {
   }
 
   render() {
-    let { token, tokenCopyFeedback } = this.state;
-    that = this;
     return (  <View style={{flex:1}}>
               { (Platform.OS==='ios')?
                 <View>
@@ -226,9 +206,11 @@ export default class FirstScreen extends Component {
                                 <Image source = {Images.imc_logo_audible} style={Styles.buttonImage} />
                             </TouchableOpacity>
                         </View>
+
                      </View>
                    </View>  
                  } 
+                 <TextInput style={{marginTop:10}} value = {this.state.token} />
             </View>      
     );
   }

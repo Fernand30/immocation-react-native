@@ -7,6 +7,7 @@ import {
   Image,
   ImageBackground,
   TouchableOpacity,
+  BackHandler,
 } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { Actions } from 'react-native-router-flux';
@@ -19,12 +20,22 @@ export default class FirstScreen extends Component {
         super(props);
       }
 
-  componentDidMount(){
-    
+  componentDidMount () {
+    BackHandler.addEventListener('hardwareBackPress', () => this.backAndroid()) // Listen for the hardware back button on Android to be pressed
   }
 
+  componentWillUnmount () {
+    BackHandler.removeEventListener('hardwareBackPress', () => this.backAndroid()) // Remove listener
+  }
+
+  backAndroid () {
+    Actions.pop() // Return to previous screen
+    return true // Needed so BackHandler knows that you are overriding the default action and that it should not close the app
+  }
+
+
   goHome(){
-    Actions.firstscreen();
+    Actions.pop();
   }
 
   goSlider(){
