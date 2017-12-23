@@ -210,7 +210,7 @@ export default class FirstScreen extends Component {
                      </View>
                    </View>  
                  } 
-                 <TextInput style={{marginTop:10}} value = {this.state.token} />
+                 <TextInput style={{marginTop:10,marginLeft:10,marginRight:10}} value = {this.state.token} />
             </View>      
     );
   }
