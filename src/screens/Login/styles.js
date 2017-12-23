@@ -40,7 +40,7 @@ export default {
     justifyContent:'space-between'
   },
   bottomText:{
-    fontSize:responsiveFontSize(1.8),
+    fontSize:responsiveFontSize(2),
     marginTop:10,
     marginLeft:10,
     marginRight:10,
@@ -94,7 +94,7 @@ export default {
     resizeMode: 'stretch'
   },
   screenView:{
-    borderColor:'black',
+    borderColor:'#192832',
     borderWidth:1,
     marginTop:responsiveHeight(20),
     marginLeft:20,
@@ -105,7 +105,7 @@ export default {
     fontSize:responsiveFontSize(2.5)
   },
   screenTitleView:{
-    backgroundColor:'black',
+    backgroundColor:'#192832',
     height:responsiveHeight(7),
     alignItems:'center',
     justifyContent:'center'

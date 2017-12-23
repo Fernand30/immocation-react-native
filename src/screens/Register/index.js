@@ -48,7 +48,7 @@ export default class FirstScreen extends Component {
                           <Text style={Styles.titleText}>Die Bierdeckel-Rente</Text>
                       </View>
                       <Text style={Styles.bottomText}>
-                          Nehmen wir an, du mochtest dich nicht auf die{"\n"}staatiche Rente verlassen.{'\n'}{'\n'}
+                          Nehmen wir an, du möchtest dich nicht auf die{"\n"}staatiche Rente verlassen.{'\n'}{'\n'}
                           Wie viel Geld musst du sparen und wie gut{'\n'}musst du es anlegen, um dir deine eigene Rente
                           {'\n'}zu erschaffen?
                           {'\n'}{'\n'}Finde es heraus!

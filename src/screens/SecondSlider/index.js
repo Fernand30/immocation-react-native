@@ -75,6 +75,7 @@ export default class SliderScreen extends Component {
   }
 
   render() {
+
     x21 = this.state.x2
     X1 = this.state.x1;
     X2 = x21.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -84,7 +85,7 @@ export default class SliderScreen extends Component {
     dStrangeParam = 6.5 * dZinsEinzahlung;
     dK1 = x21 * (12 + dStrangeParam);
     valx1 = dK1 * (Math.pow((1+dZinsEinzahlung), X1)-1)/dZinsEinzahlung;
-    val1 = valx1.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    val1 = valx1.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     dZinsAuszahlung = 0.02;
     q = 1 + dZinsAuszahlung/12;
     dFaktor2 = (q-1);
@@ -92,9 +93,13 @@ export default class SliderScreen extends Component {
     dFaktor3 = Math.pow(q, dMonateAuszahlung) - 1;
     dFaktor1 = Math.pow(q, dMonateAuszahlung -1);
     valx2 = valx1 * dFaktor1 * dFaktor2 / dFaktor3;
-    val2 = valx2.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    val2 = valx2.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    if(X3==0){
+      val1 = 0
+      val2 = 0
+    }
     valx3 = valx2 / Math.pow(1.02, X1); 
-    val3 = valx3.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    val3 = valx3.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     if(X1 == 1) jah = 'Jahr'
       else jah = 'Jahren'
     if(X4 == 1) jah1 = 'Jahr'
@@ -112,20 +117,20 @@ export default class SliderScreen extends Component {
                    <View style={Styles.blackView}>
                       <View style={Styles.flexView}>
                           <Text style={Styles.whiteText}>Vermögen nach {X1} {jah}:</Text>
-                          <Text style={Styles.whiteText}>{val1}€</Text>
+                          <Text style={Styles.whiteText}>{val1} €</Text>
                       </View>
                       <View style={Styles.flexView}>
-                          <Text style={Styles.whiteText}>Auszahlung / Monat({X4} {jah1}):</Text>
-                          <Text style={Styles.whiteText}>{val2}€</Text>
+                          <Text style={Styles.whiteText}>Auszahlung / Monat ({X4} {jah1}):</Text>
+                          <Text style={Styles.whiteText}>{val2} €</Text>
                       </View>
                       <View style={Styles.commonView}>
-                          <Text style={Styles.whitesmallText}>Bei 2% inflation entspricht dies {val3}€ in heutiger Kaukraft</Text>
+                          <Text style={Styles.whitesmallText}>Bei 2 % Inflation entspricht dies {val3} € in heutiger Kaukraft</Text>
                       </View>
                    </View>
                    <View style={Styles.sliderView}>
                       <View style={Styles.flexView}>
                         <Text style={Styles.blackText}>Wie lange zahlst du ein?</Text>
-                        <Text style={Styles.blackText}>{X1} Jahre</Text>
+                        <Text style={Styles.blackText}>{X1} {jah}</Text>
                       </View>
                       <View style={Styles.sliderWidth}>
                           <Slider
@@ -147,7 +152,7 @@ export default class SliderScreen extends Component {
                    <View style={Styles.sliderView}>
                       <View style={Styles.flexView}>
                         <Text style={Styles.blackText}>Wie viel sparst du pro Monat?</Text>
-                        <Text style={Styles.blackText}>{X2}€</Text>
+                        <Text style={Styles.blackText}>{X2} €</Text>
                       </View>
                       <View style={Styles.sliderWidth}>
                           <Slider
@@ -186,13 +191,13 @@ export default class SliderScreen extends Component {
                             onValueChange = {(val)=>this.onChangeValue3(val)}
                             value= {X3}
                           />
-                          <Text style={Styles.blacksmallText}>Annahme fur Auszahlungszeitraum:2%</Text>
+                          <Text style={Styles.blacksmallText}>Annahme fur Auszahlungszeitraum:2 %</Text>
                       </View> 
                    </View>
                    <View style={Styles.sliderView}>
                       <View style={Styles.flexView}>
                         <Text style={Styles.blackText}>Wie lange hebst du ab?</Text>
-                        <Text style={Styles.blackText}>{X4}Jahre</Text>
+                        <Text style={Styles.blackText}>{X4} {jah1}</Text>
                       </View>
                       <View style={Styles.sliderWidth}>
                           <Slider
@@ -213,7 +218,7 @@ export default class SliderScreen extends Component {
                    </View>
                    <View style={{flex:1,justifyContent:'center'}}>
                        <TouchableOpacity onPress={this.goSafari.bind(this)} style={Styles.buttonView}>
-                          <Text style={Styles.whiteText}>ALTERSVORSORGE LOSEN</Text>
+                          <Text style={Styles.whiteText}>ALTERSVORSORGE LÖSEN</Text>
                        </TouchableOpacity>
                    </View>       
             </View>

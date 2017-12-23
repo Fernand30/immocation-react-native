@@ -75,7 +75,6 @@ export default class SliderScreen extends Component {
   }
 
   render() {
-
     nach = this.state.x1;
     nachM = this.state.x1*1345
     mona = this.state.x1*10;
@@ -87,13 +86,13 @@ export default class SliderScreen extends Component {
 
     xx4 = this.state.x3*this.state.x4
     xx41 = xx4.toFixed(0)
-    xxx4 = xx41.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    xxx4 = xx41.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     fixv = value.toFixed(1)
     tem1 = this.state.x2/this.state.x3
     tem2 = this.state.x2 
     temx12 = tem1.toFixed(0)
-    temx1 = temx12.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    temx2 = tem2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    temx1 = temx12.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    temx2 = tem2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     if(value>10) value = 10
     if(value>=6){
       barColor = '#0ef513'
@@ -120,7 +119,7 @@ export default class SliderScreen extends Component {
                    <View style={Styles.blackView}>
                       <View style={Styles.flexView}>
                           <Text style={Styles.whiteText}>Bruttomietrendite</Text>
-                          <Text style={Styles.whiteText}>{fixv}%</Text>
+                          <Text style={Styles.whiteText}>{fixv} %</Text>
                       </View>
                       <View style={Styles.sliderWidth}>
                           <Slider
@@ -151,8 +150,8 @@ export default class SliderScreen extends Component {
                    <View style={Styles.sliderView}>
                       <View style={Styles.flexView}>
                         <Text style={Styles.blackText}>Kaufpreis</Text>
-                        <Text style={Styles.blackText}>{temx1}€/m²</Text>
-                        <Text style={Styles.blackText}>{temx2}€</Text>
+                        <Text style={Styles.blackText}>{temx1} €/m²</Text>
+                        <Text style={Styles.blackText}>{temx2} €</Text>
                       </View>
                       <View style={Styles.sliderWidth}>
                           <Slider
@@ -173,7 +172,7 @@ export default class SliderScreen extends Component {
                    </View>
                    <View style={Styles.sliderView}>
                       <View style={Styles.flexView}>
-                        <Text style={Styles.blackText}>Wohnflache</Text>
+                        <Text style={Styles.blackText}>Wohnfläche</Text>
                         <Text style={Styles.blackText}>{this.state.x3}m²</Text>
                       </View>
                       <View style={Styles.sliderWidth}>
@@ -196,8 +195,8 @@ export default class SliderScreen extends Component {
                    <View style={Styles.sliderView}>
                       <View style={Styles.flexView}>
                         <Text style={Styles.blackText}>Kaltmiete</Text>
-                        <Text style={Styles.blackText}>{xxx4}€/Monat</Text>
-                        <Text style={Styles.blackText}>{x4}€/m²</Text>
+                        <Text style={Styles.blackText}>{xxx4} €/Monat</Text>
+                        <Text style={Styles.blackText}>{x4} €/m²</Text>
                       </View>
                       <View style={Styles.sliderWidth}>
                           <Slider

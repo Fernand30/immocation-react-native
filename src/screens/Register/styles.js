@@ -94,7 +94,7 @@ export default {
     resizeMode: 'stretch'
   },
   screenView:{
-    borderColor:'black',
+    borderColor:'#192832',
     borderWidth:1,
     marginTop:responsiveHeight(20),
     marginLeft:20,
@@ -105,7 +105,7 @@ export default {
     fontSize:responsiveFontSize(2.5)
   },
   screenTitleView:{
-    backgroundColor:'black',
+    backgroundColor:'#192832',
     height:responsiveHeight(7),
     alignItems:'center',
     justifyContent:'center'

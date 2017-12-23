@@ -48,7 +48,7 @@ export default class FirstScreen extends Component {
                           <Text style={Styles.titleText}>Der Bierdeckel-Rechner</Text>
                       </View>
                       <Text style={Styles.bottomText}>
-                          Nehmen wir an, du mochtest dir durch den Kauf{"\n"}einer kleinen Wohnung deine eigene Rente{'\n'}
+                          Nehmen wir an, du möchtest dir durch den Kauf{"\n"}einer kleinen Wohnung deine eigene Rente{'\n'}
                           aufbauen.{'\n'}{'\n'}
                           Wann ist eine angebotene Wohnung eine{'\n'}lohnenswerte Geldanlage?
                           {'\n'}{'\n'}Finde es heraus!

@@ -28,7 +28,7 @@ export default {
     paddingBottom:10,
   },
   blackView:{
-    backgroundColor:'black',
+    backgroundColor:'#192832',
     marginTop:20,
     paddingBottom:10
   },
@@ -50,21 +50,21 @@ export default {
     marginTop:10,
   },
   whiteText:{
-    fontSize:responsiveFontSize(2),
+    fontSize:responsiveFontSize(2.5),
     color:'white'
   },
   whitesmallText:{
-    fontSize:responsiveFontSize(1.3),
+    fontSize:responsiveFontSize(1.5),
     color:'white',
     marginLeft:20,
     height:30,
   },
   blackText:{
-    fontSize:responsiveFontSize(2),
-    color:'black'
+    fontSize:responsiveFontSize(2.5),
+    color:'#192832'
   },
   blacksmallText:{
-    fontSize:responsiveFontSize(1.5),
+    fontSize:responsiveFontSize(2),
     color:'#828282',
     textAlign:'center',
     marginBottom:5
@@ -116,7 +116,7 @@ export default {
     resizeMode: 'stretch'
   },
   screenView:{
-    borderColor:'black',
+    borderColor:'#192832',
     borderWidth:1,
     marginTop:responsiveHeight(20),
     marginLeft:20,
@@ -127,7 +127,7 @@ export default {
     fontSize:responsiveFontSize(2.5)
   },
   screenTitleView:{
-    backgroundColor:'black',
+    backgroundColor:'#192832',
     height:responsiveHeight(7),
     alignItems:'center',
     justifyContent:'center'

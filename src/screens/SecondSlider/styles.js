@@ -26,8 +26,8 @@ export default {
     borderBottomWidth:1,
     paddingTop:10,
   },
-  blackView:{
-    backgroundColor:'black',
+   blackView:{
+    backgroundColor:'#192832',
     marginTop:20,
     paddingBottom:10
   },
@@ -58,7 +58,7 @@ export default {
   },
   blackText:{
     fontSize:responsiveFontSize(2),
-    color:'black'
+    color:'#192832'
   },
   blacksmallText:{
     fontSize:responsiveFontSize(1.5),
@@ -113,7 +113,7 @@ export default {
     resizeMode: 'stretch'
   },
   screenView:{
-    borderColor:'black',
+    borderColor:'#192832',
     borderWidth:1,
     marginTop:responsiveHeight(20),
     marginLeft:20,
@@ -124,7 +124,7 @@ export default {
     fontSize:responsiveFontSize(2.5)
   },
   screenTitleView:{
-    backgroundColor:'black',
+    backgroundColor:'#192832',
     height:responsiveHeight(7),
     alignItems:'center',
     justifyContent:'center'
