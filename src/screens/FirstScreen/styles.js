@@ -166,7 +166,7 @@ export default {
     fontWeight:'800'
   },
   screenTitleView:{
-    backgroundColor:'black',
+    backgroundColor:'#192832',
     height:responsiveHeight(7),
     alignItems:'center',
     justifyContent:'center'
